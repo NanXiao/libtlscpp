@@ -24,20 +24,12 @@ int main()
         char greeting[] = "Hello world!";
         c.write(greeting, strlen(greeting));
 
-        while (1)
+        char response[1024]{};
+        auto n = c.read(response, sizeof(response) - 1);
+        if (n)
         {
-            char response[1024]{};
-            auto n = c.read(response, sizeof(response));
-            if (n)
-            {
-                std::cout << response;
-            }
-            else
-            {
-                break;
-            }
+            std::cout << response << '\n';
         }
-        std::cout << '\n';
     }
     catch(libtlscpp::exception& e)
     {

@@ -38,7 +38,7 @@ int main()
             auto func = [](libtlscpp::context conn)
             {
                 char buf[1024]{};
-                conn.write(buf, conn.read(buf, sizeof(buf)));
+                conn.write(buf, conn.read(buf, sizeof(buf) - 1));
                 std::cout << buf << '\n';
             };
             auto conn = s.accept_connection();
